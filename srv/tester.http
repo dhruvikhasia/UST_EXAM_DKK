@@ -1,0 +1,105 @@
+###Get the service document
+http://localhost:4004/odata/v4/EmpService
+
+
+###Get the metadata document
+http://localhost:4004/odata/v4/EmpService/$metadata
+
+
+###Get All Employees Dataset
+http://localhost:4004/odata/v4/EmpService/EmployeeSet
+
+
+###Get all the Employees whose name starts with ‘S’.
+http://localhost:4004/odata/v4/EmpService/EmployeeSet?$filter=contains(nameFirst,'S')
+
+
+###CREATE an employee with salary<50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmpService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Tia",
+      "nameMiddle": null,
+      "nameLast": "Khasia",
+      "nameInitials": null,
+      "gender": "F",
+      "language": "E",
+      "phoneNumber": "9082729914",
+      "Email": "tiakhasia@gmail.com",
+      "loginName": "TIAK",
+      "Currency_code": "USD",
+      "salaryAmount": 45000,
+      "accountNumber": "9082729914",
+      "bankId": "12100035",
+      "bankName": "My Bank of San Francisco"
+    }
+
+
+###CREATE an employee with salary>50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmpService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Chandrika",
+      "nameMiddle": null,
+      "nameLast": "Khasia",
+      "nameInitials": null,
+      "gender": "F",
+      "language": "E",
+      "phoneNumber": "9082729915",
+      "Email": "ckhasia@gmail.com",
+      "loginName": "CKK",
+      "Currency_code": "USD",
+      "salaryAmount": 60000,
+      "accountNumber": "9082729915",
+      "bankId": "12100035",
+      "bankName": "My Bank of San Francisco"
+    }
+
+
+###CREATE an employee with salary<50000 & currency code EUR.
+POST http://localhost:4004/odata/v4/EmpService/EmployeeSet
+Content-Type: application/json
+{
+  "nameFirst": "Rita",
+  "nameMiddle": null,
+  "nameLast": "Khasia",
+  "nameInitials": null,
+  "gender": "F",
+  "language": "E",
+  "phoneNumber": "9082729915",
+  "Email": "ckhasia@gmail.com",
+  "loginName": "RKK",
+  "Currency_code": "EUR",
+  "salaryAmount": 250000,
+  "accountNumber": "9082729915",
+  "bankId": "12100035",
+  "bankName": "My Bank of San Francisco"
+}
+
+###UPDATE employee by keeping nameFirst and loginName as it is:
+PATCH http://localhost:4004/odata/v4/EmpService/EmployeeSet/72934dfc-0857-4dd6-bada-07fad0d174fc
+Content-Type: application/json
+
+{
+    "nameFirst":"Rita",
+    "loginName": "RKK",
+    "Email":"ritagohil@gmail.com",
+    "phoneNumber": "9653199707"
+}
+
+
+###UPDATE employee by changing loginName:
+PATCH http://localhost:4004/odata/v4/EmpService/EmployeeSet/72934dfc-0857-4dd6-bada-07fad0d174fc
+Content-Type: application/json
+
+{
+    "loginName": "RGohil"   
+}
+
+
+
+###Delete employee
+DELETE http://localhost:4004/odata/v4/EmpService/EmployeeSet/72934dfc-0857-4dd6-bada-07fad0d174fc
+
